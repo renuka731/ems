@@ -11,7 +11,6 @@ import com.renu.pojo.EmployeeAttendance;
 import com.renu.service.EmpAttenImpl;
 
 @RestController
-
 public class AttendanceController {
 	@Autowired
 	private EmpAttenImpl empattService;
