@@ -1,5 +1,6 @@
 package com.renu.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renu.pojo.Employee;
-import com.renu.service.Employee_service_implementation;
+import com.renu.service.EmployeeServiceImpl;
 
 @RestController
-public class Employee_controller {
+public class EmployeeController {
 
 	@Autowired
-	private Employee_service_implementation employee_service;
+	private EmployeeServiceImpl employee_service;
 
 	@GetMapping("/getemp")
 	public List<Employee> showEployees() {
@@ -41,5 +42,12 @@ public class Employee_controller {
 	@DeleteMapping("/delete")
 	public void deleteEmp(int id) {
 		employee_service.delete(id);
+	}
+
+	@GetMapping("/getgroupingdept")
+	public HashMap<String, List<Employee>> getGroupByDept(List<Employee> empl) {
+
+		HashMap<String, List<Employee>> map = employee_service.groupingByDepartment();
+		return map;
 	}
 }

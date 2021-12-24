@@ -7,8 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table
+@Entity(name = "emp")
+@Table(name = "employee")
+
 public class Employee {
 
 	@Column
@@ -29,8 +30,9 @@ public class Employee {
 	private String department;
 	@Column
 	private String degination;
-	
-	public Employee(String name, long id, String address, long salary, String email, long phonenum) {
+
+	public Employee(String name, long id, String address, long salary, String email, long phonenum, String department,
+			String degination) {
 		super();
 		this.name = name;
 		this.id = id;
@@ -38,10 +40,12 @@ public class Employee {
 		this.salary = salary;
 		this.email = email;
 		this.phonenum = phonenum;
+		this.department = department;
+		this.degination = degination;
 	}
 
 	public Employee() {
-		
+
 	}
 
 	public String getName() {
