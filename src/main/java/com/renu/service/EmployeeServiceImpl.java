@@ -33,22 +33,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee createEmployee(Employee emp) {
 		Employee e = emprepo.save(emp);
 		return e;
+
 	}
 
 	@Override
-	public Employee updateEmp(Employee emp, long id) {
-		Employee e = new Employee();
-		Optional<Employee> savedEmp = emprepo.findById(id);
-		Employee updatedEmp = savedEmp.get();
-		if (savedEmp.isPresent()) {
-			BeanUtils.copyProperties(emp, updatedEmp);
-		}
-		e = emprepo.save(updatedEmp);
+
+	public Employee updateEmp(Employee emp) {
+		Employee e=	emprepo.save(emp);
 		return e;
 	}
 
 	@Override
 	public void delete(long id) {
+
 		Optional<Employee> savedEmp = emprepo.findById(id);
 
 		if (savedEmp.isPresent()) {
@@ -60,21 +57,41 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	public HashMap<String, List<Employee>> groupingByDepartment() {
 
-		List<Employee> al = new ArrayList<Employee>();
-		emprepo.findAll().forEach(emp -> al.add(emp));
-		HashMap<String, List<Employee>> map = new HashMap<>();
-		for (Employee e : al) {
-			if (!map.containsKey(e.getDepartment())) {
+		List<Employee> allEmployeeList = emprepo.findAll();
+
+		HashMap<String, List<Employee>> deptwiseemplist = new HashMap<>();
+		for (Employee e : allEmployeeList) {
+			if (!deptwiseemplist.containsKey(e.getDepartment())) {
 				List<Employee> newList = new ArrayList<>();
 				newList.add(e);
-				map.put(e.getDepartment(), newList);
+				deptwiseemplist.put(e.getDepartment(), newList);
 			} else {
-				List<Employee> existingList = map.get(e.getDepartment());
+				List<Employee> existingList = deptwiseemplist.get(e.getDepartment());
 				existingList.add(e);
-				map.put(e.getDepartment(), existingList);
+				deptwiseemplist.put(e.getDepartment(), existingList);
 			}
 		}
-		return map;
+		return deptwiseemplist;
+	}
+
+	@Override
+	public HashMap<String, List<Employee>> groupingByDegination() {
+
+		List<Employee> allEmployeeList = emprepo.findAll();
+
+		HashMap<String, List<Employee>> degiwiseemplist = new HashMap<>();
+		for (Employee e : allEmployeeList) {
+			if (!degiwiseemplist.containsKey(e.getDegination())) {
+				List<Employee> newList = new ArrayList<>();
+				newList.add(e);
+				degiwiseemplist.put(e.getDegination(), newList);
+			} else {
+				List<Employee> existingList = degiwiseemplist.get(e.getDegination());
+				existingList.add(e);
+				degiwiseemplist.put(e.getDepartment(), existingList);
+			}
+		}
+		return degiwiseemplist;
 	}
 
 }

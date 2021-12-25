@@ -44,9 +44,13 @@ public class Employee {
 		this.degination = degination;
 	}
 
-	public Employee() {
+	
 
+	public Employee() {
+		
 	}
+
+
 
 	public String getName() {
 		return name;

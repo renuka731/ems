@@ -23,31 +23,44 @@ public class EmployeeController {
 
 	@GetMapping("/getemp")
 	public List<Employee> showEployees() {
+		System.out.println("get employee list");
 		return employee_service.getAllEmployeeList();
 
 	}
 
 	@PostMapping("/createemp")
 	public Employee createEmployees(@RequestBody Employee emp) {
+		System.out.println("employee created successfully");
 		Employee e = employee_service.createEmployee(emp);
 		return e;
 	}
 
 	@PutMapping("/updateemp")
-	public Employee updatesEmployees(@RequestBody Employee emp, @PathVariable long id) {
-		Employee updatedEmployee = employee_service.updateEmp(emp, id);
+	public Employee updatesEmployees(@RequestBody Employee emp) {
+		System.out.println("employee update successfully");
+		Employee updatedEmployee = employee_service.updateEmp(emp);
+		System.out.println("update employee successfully");
 		return updatedEmployee;
 	}
 
 	@DeleteMapping("/delete")
 	public void deleteEmp(int id) {
+		System.out.println("employee delete");
 		employee_service.delete(id);
+		System.out.println("emp deleted successfully");
 	}
 
 	@GetMapping("/getgroupingdept")
-	public HashMap<String, List<Employee>> getGroupByDept(List<Employee> empl) {
+	public HashMap<String, List<Employee>> getGroupByDept() {
+		System.out.println("department wise emp list");
+		HashMap<String, List<Employee>> deptwiseemplist = employee_service.groupingByDepartment();
+		return deptwiseemplist;
+	}
 
-		HashMap<String, List<Employee>> map = employee_service.groupingByDepartment();
-		return map;
+	@GetMapping("/getgroupingdegi")
+	public HashMap<String, List<Employee>> getGroupByDegi() {
+		System.out.println("department wise emp list");
+		HashMap<String, List<Employee>> degiwiseemplist = employee_service.groupingByDegination();
+		return degiwiseemplist;
 	}
 }

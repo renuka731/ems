@@ -11,11 +11,13 @@ public interface EmployeeService {
 
 	Employee createEmployee(Employee emp);
 
-	Employee updateEmp(Employee emp, long id);
+	Employee updateEmp(Employee emp);
 
 	// Optional<Employee> findById(long id);
 
 	void delete(long id);
 
 	HashMap<String, List<Employee>> groupingByDepartment();
+
+	HashMap<String, List<Employee>> groupingByDegination();
 }
