@@ -7,18 +7,32 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table
 public class EmployeeAttendance {
-	@Id
+
 	@Column
 	private long id;
+	
 	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
 	private Date date;
 	@Column
 	private String status;
 	@Column
 	private String name;
+	@Id
+	@Column
+	private int serialno;
+
+	public EmployeeAttendance() {
+
+	}
 
 	public String getName() {
 		return name;
@@ -28,11 +42,20 @@ public class EmployeeAttendance {
 		this.name = name;
 	}
 
-	public EmployeeAttendance(long id, Date date, String status) {
+	public EmployeeAttendance(long id, Date date, String status, int serialno) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.status = status;
+		this.serialno = serialno;
+	}
+
+	public int getSerialno() {
+		return serialno;
+	}
+
+	public void setSerialno(int serialno) {
+		this.serialno = serialno;
 	}
 
 	public long getId() {
