@@ -20,4 +20,6 @@ public interface EmployeeService {
 	HashMap<String, List<Employee>> groupingByDepartment();
 
 	HashMap<String, List<Employee>> groupingByDegination();
+	
+	double calMonthlySalary(long id,int monthId);
 }

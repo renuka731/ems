@@ -21,7 +21,7 @@ public class Employee {
 	@Column
 	private String address;
 	@Column
-	private long salary;
+	private double salary;
 	@Column
 	private String email;
 	@Column
@@ -31,7 +31,7 @@ public class Employee {
 	@Column
 	private String degination;
 
-	public Employee(String name, long id, String address, long salary, String email, long phonenum, String department,
+	public Employee(String name, long id, String address, double salary, String email, long phonenum, String department,
 			String degination) {
 		super();
 		this.name = name;
@@ -76,7 +76,7 @@ public class Employee {
 		this.address = address;
 	}
 
-	public long getSalary() {
+	public double getSalary() {
 		return salary;
 	}
 

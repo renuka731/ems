@@ -12,5 +12,6 @@ import antlr.collections.List;
 
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Long> {
-
+	//@Query("select e.salary from Employee e where e.id ")
+	//double calMonthlySalary(long empId, int monthId);
 }

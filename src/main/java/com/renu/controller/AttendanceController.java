@@ -57,7 +57,7 @@ public class AttendanceController {
 
 	}
 
-	@GetMapping("/getinbetweendatesattreport")
+	@GetMapping("/getinbetweendatesatt")
 	public int getInBetweenDatesAtten(@RequestParam  @DateTimeFormat(pattern = "yyyy-MM-dd") Date startdate, @RequestParam  @DateTimeFormat(pattern = "yyyy-MM-dd")  Date enddate, @RequestParam long id) {
 		System.out.println("get emp  attendace in between dates  report");
 		System.out.println(startdate);

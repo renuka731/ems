@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renu.pojo.Employee;
@@ -62,5 +63,11 @@ public class EmployeeController {
 		System.out.println("department wise emp list");
 		HashMap<String, List<Employee>> degiwiseemplist = employee_service.groupingByDegination();
 		return degiwiseemplist;
+	}
+
+	@GetMapping("/getmonthsal")
+	public double getMonthlsal(@RequestParam long empId, @RequestParam int monthId) {
+		System.out.println("cal monthly sal");
+		return employee_service.calMonthlySalary(empId, monthId);
 	}
 }

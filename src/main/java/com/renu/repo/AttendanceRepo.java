@@ -14,5 +14,7 @@ public interface AttendanceRepo extends JpaRepository<EmployeeAttendance, Intege
 	
 	@Query("select COUNT(a) from EmployeeAttendance a where  a.date> ?1 and a.date < ?2")
 	int inBetweenDatesAttendace(Date startdate, Date enddate, long id);
+	
+	
 
 }
