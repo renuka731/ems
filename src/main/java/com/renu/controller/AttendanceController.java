@@ -43,13 +43,15 @@ public class AttendanceController {
 	public List<EmployeeAttendance> getEmpAttList() {
 		System.out.println("get emp attendace report");
 		List<EmployeeAttendance> al = empattService.getEmpAttenList();
-		
+
 		System.out.println(al.size());
 		return al;
 	}
 
 	@GetMapping("/getempAttmonthlylist")
-	public List<EmployeeAttendance> getEmpMonthlyAttList(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startdate, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date enddate) {
+	public List<EmployeeAttendance> getEmpMonthlyAttList(
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startdate,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date enddate) {
 		System.out.println("get emp monthly attendace  report");
 		System.out.println(startdate);
 		System.out.println(enddate);
@@ -58,16 +60,21 @@ public class AttendanceController {
 	}
 
 	@GetMapping("/getinbetweendatesatt")
-	public int getInBetweenDatesAtten(@RequestParam  @DateTimeFormat(pattern = "yyyy-MM-dd") Date startdate, @RequestParam  @DateTimeFormat(pattern = "yyyy-MM-dd")  Date enddate, @RequestParam long id) {
+	public int getInBetweenDatesAtten(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startdate,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date enddate, @RequestParam long id) {
 		System.out.println("get emp  attendace in between dates  report");
 		System.out.println(startdate);
 		System.out.println(enddate);
 		System.out.println(id);
-		
-		
-		return empattService.inBetweenDatesAttendace(startdate, enddate, id);
-		
-		
 
+		return empattService.inBetweenDatesAttendace(startdate, enddate, id);
 	}
+
+	@GetMapping("/getattenbyid")
+	public List<EmployeeAttendance> getAttenById(@ RequestParam long id) {
+		System.out.println(" Atteandance get by id ");
+		List<EmployeeAttendance> empAtten = empattService.getEmpAttenById(id);
+		return empAtten;
+	}
+
 }

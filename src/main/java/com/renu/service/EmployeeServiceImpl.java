@@ -154,8 +154,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 			System.out.println("one day sal : " + oneDaysal);
 			double inMonthSal = oneDaysal * salPayTalDays;
 			System.out.println("month sal :" + inMonthSal);
+			
 			return inMonthSal;
 		}
+		
 	}
 
 }

@@ -3,6 +3,7 @@ package com.renu.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,13 @@ public class EmpAttenImpl implements AtteandanceService {
 		System.out.println("attendance in between dates :"+i);
 	return i;
 		
+	}
+
+	@Override
+	public List<EmployeeAttendance> getEmpAttenById(long id) {
+		List<EmployeeAttendance> empattenList =attenRepo.findById(id);
+		empattenList.size();
+		return empattenList;
 	}
 
 }
